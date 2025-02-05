@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading Animation with Percentage</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="loader">
+        <!-- <span class="percentage" style="position: fixed;">0%</span> -->
+    </div>
+    <script>
+        const percentageElement = document.querySelector('.percentage');
+
+let percent = 0;
+const interval = 50; // Update every 50ms
+const duration = 5000; // 5 seconds
+const increment = (100 * interval) / duration;
+
+const updatePercentage = () => {
+    percent += increment;
+    percentageElement.textContent = `${Math.min(Math.floor(percent), 100)}%`;
+
+    if (percent < 100) {
+        setTimeout(updatePercentage, interval);
+    }
+};
+
+updatePercentage();
+    </script>
+</body>
+</html>
